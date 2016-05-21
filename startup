@@ -1,0 +1,32 @@
+os.pullEvent = os.pullEventRaw
+shell.run("functions")
+shell.run(".userdata")
+term.setBackgroundColor(colors.blue)
+term.clear()
+cp(3,"username")
+cp(6,"passcode")
+term.setBackgroundColor(colors.gray)
+cp(4,"                  ")
+cp(7,"                  ")
+term.setCursorPos(16,4)
+user = read()
+term.setBackgroundColor(colors.blue)
+for i = 1, #un do
+  if un[i] == user then
+    usernum = i
+    break
+  elseif i == #un then
+  cp(4,"NO SUCH USER")
+  sleep(2)
+  os.reboot()       
+  end
+end
+term.setCursorPos(16,7)
+term.setBackgroundColor(colors.gray)
+pass = read("*")
+if pass == ps[usernum] then
+term.setBackgroundColor(colors.black)
+shell.run("UserConsole")
+else
+os.reboot()
+end
